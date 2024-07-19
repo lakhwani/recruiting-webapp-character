@@ -2,7 +2,7 @@ import React from "react";
 import { CLASS_LIST } from "../consts";
 import "./ClassList.css";
 
-const ClassList = ({ attributeValues }) => {
+const ClassList = ({ attributeValues, onClassClick }) => {
   const checkRequirements = (className) => {
     const requirements = CLASS_LIST[className];
     return Object.keys(requirements).every(
@@ -12,16 +12,15 @@ const ClassList = ({ attributeValues }) => {
 
   return (
     <div>
-      <h2>Available Classes</h2>
       {Object.keys(CLASS_LIST).map((className) => {
         const meetsRequirements = checkRequirements(className);
         return (
           <div
             key={className}
+            className="class-item"
+            onClick={() => onClassClick(className)}
             style={{
-              border: "1px solid",
-              padding: "10px",
-              margin: "10px",
+              cursor: "pointer",
               backgroundColor: meetsRequirements ? "lightgreen" : "lightcoral",
             }}
           >

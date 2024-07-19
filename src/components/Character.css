@@ -1,0 +1,15 @@
+.character-container {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  padding: 20px;
+}
+
+.class-item {
+  border: 1px solid;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+}

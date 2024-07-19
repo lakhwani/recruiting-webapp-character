@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import AttributeList from "./components/AttributeList";
+import Character from "./components/Character";
 import AttributeProvider from "./context/AttributeContext";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
           <h1>React Coding Exercise</h1>
         </header>
         <section className="App-section">
-          <AttributeList />
+          <Character />
         </section>
       </div>
     </AttributeProvider>
