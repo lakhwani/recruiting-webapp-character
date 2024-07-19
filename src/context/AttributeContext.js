@@ -5,7 +5,7 @@ export const AttributeContext = createContext();
 
 const AttributeProvider = ({ children }) => {
   const initialValues = ATTRIBUTE_LIST.reduce((acc, attribute) => {
-    acc[attribute] = 0;
+    acc[attribute] = 10;
     return acc;
   }, {});
 
