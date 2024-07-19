@@ -5,10 +5,11 @@ import ClassList from "./ClassList";
 import ClassDetails from "./ClassDetails";
 import SkillList from "./SkillList";
 import { AttributeContext } from "../context/AttributeContext";
+import { getCharacter, saveCharacter } from "../api/characterApi";
 import "./Character.css";
 
 const Character = () => {
-  const { values, handleIncrement, handleDecrement } =
+  const { values, setValues, handleIncrement, handleDecrement } =
     useContext(AttributeContext);
   const [selectedClass, setSelectedClass] = useState(null);
 
@@ -16,8 +17,25 @@ const Character = () => {
     setSelectedClass(className);
   };
 
+  const handleSave = async () => {
+    await saveCharacter({ attributes: values });
+    alert("Character data saved!");
+  };
+
+  const handleRetrieve = async () => {
+    const characterAttributes = await getCharacter();
+    if (characterAttributes) {
+      setValues(characterAttributes);
+      alert("Character data retrieved!");
+    }
+  };
+
   return (
     <div className="character-container">
+      <div className="buttons-container">
+        <button onClick={handleSave}>Save Character</button>
+        <button onClick={handleRetrieve}>Retrieve Character</button>
+      </div>
       <div className="column">
         <h2>Attributes</h2>
         {ATTRIBUTE_LIST.map((attribute) => (

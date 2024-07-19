@@ -40,6 +40,10 @@ const SkillList = () => {
   return (
     <div className="skill-list">
       <h2>Skills</h2>
+      <div className="points-info">
+        <span>Total Points Available: {totalAvailablePoints}</span>
+        <span>Points Remaining: {remainingPoints}</span>
+      </div>
       {SKILL_LIST.map((skill) => (
         <Skill
           key={skill.name}
@@ -51,10 +55,6 @@ const SkillList = () => {
           totalPoints={remainingPoints}
         />
       ))}
-      <div className="points-info">
-        <span>Total Points Available: {totalAvailablePoints}</span>
-        <span>Points Remaining: {remainingPoints}</span>
-      </div>
     </div>
   );
 };
