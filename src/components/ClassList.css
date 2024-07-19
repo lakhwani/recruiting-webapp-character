@@ -1,0 +1,13 @@
+.class-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.class-item {
+  width: 48%;
+  border: 1px solid;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+}

@@ -1,38 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { ATTRIBUTE_LIST } from "../consts";
 import Attribute from "./Attribute";
+import ClassList from "./ClassList";
+import { AttributeContext } from "../context/AttributeContext";
 
 const AttributeList = () => {
-  const initialValues = ATTRIBUTE_LIST.reduce((acc, attribute) => {
-    acc[attribute] = 0;
-    return acc;
-  }, {});
+  const { values, handleIncrement, handleDecrement } =
+    useContext(AttributeContext);
 
-  const [values, setValues] = useState(initialValues);
-
-  function handleIncrement(attribute) {
-    setValues({
-      ...values,
-      [attribute]: values[attribute] + 1,
-    });
-  }
-
-  function handleDecrement(attribute) {
-    setValues({
-      ...values,
-      [attribute]: values[attribute] - 1,
-    });
-  }
-
-  return ATTRIBUTE_LIST.map((attribute) => (
-    <Attribute
-      key={attribute}
-      attributeName={attribute}
-      attributeValue={values[attribute]}
-      onIncrement={() => handleIncrement(attribute)}
-      onDecrement={() => handleDecrement(attribute)}
-    ></Attribute>
-  ));
+  return (
+    <div>
+      {ATTRIBUTE_LIST.map((attribute) => (
+        <Attribute
+          key={attribute}
+          attributeName={attribute}
+          attributeValue={values[attribute]}
+          onIncrement={() => handleIncrement(attribute)}
+          onDecrement={() => handleDecrement(attribute)}
+        />
+      ))}
+      <ClassList attributeValues={values} />
+    </div>
+  );
 };
 
 export default AttributeList;
